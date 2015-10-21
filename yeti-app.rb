@@ -12,5 +12,16 @@ end
 
 post '/posts' do
   content_type :json
-  {"This" => "is where you would post"}.to_json
+  {"Message" => "Message from the back end: This is where you would post"}.to_json
+end
+
+put '/posts' do
+  content_type :json
+  {"Message" => "Message from the back end: This is where you would flag a post"}.to_json
+end
+
+
+delete '/posts' do
+  content_type :json
+  {"Message" => "Message from the back end: This is where you would delete"}.to_json
 end

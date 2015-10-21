@@ -12,6 +12,7 @@ var posts = new postStore;
 var feedView = Backbone.View.extend({
   events: {
     'click .thumbnail-img': 'promoteModal',
+    'click .message-button': 'displayMessage',
   },
 
   initialize: function(){
@@ -43,7 +44,23 @@ var feedView = Backbone.View.extend({
       likeString = likeData + " likes";
     }
     $("#numLikes").html(likeString);
-  }
+  },
+
+  displayMessage: function(e){
+    e.preventDefault();
+    var requestType = $(e.currentTarget).html() === "Flag" ? "put" : "delete"
+    $.ajax({
+      type: requestType,
+      url: "/posts",
+      success: function (response) {
+        $("#message").html(response.Message)
+        $("#message").fadeIn();
+        setTimeout(function(){
+          $("#message").fadeOut()
+        }, 1000)
+      }
+    });
+  },
 
 });
 
