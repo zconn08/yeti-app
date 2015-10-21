@@ -1,4 +1,27 @@
-img {
-  height: 300px;
-  width: 200px;
+.thumbnail-img {
+  width: 24.5%;
+}
+
+.modal-img {
+  width: 60%;
+  left: 20%;
+  position: relative;
+}
+
+#numLikes {
+  position: fixed;
+  bottom: 5px;
+  left: 10px;
+}
+
+.btn-danger {
+  position: fixed;
+  bottom: 5px;
+  right: 10px;
+}
+
+.btn-primary {
+  position: fixed;
+  bottom: 40px;
+  right: 10px;
 }

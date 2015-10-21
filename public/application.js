@@ -10,6 +10,9 @@ var postStore = Backbone.Collection.extend({
 var posts = new postStore;
 
 var feedView = Backbone.View.extend({
+  events: {
+    'click .thumbnail-img': 'promoteModal',
+  },
 
   initialize: function(){
     this.collection.fetch({
@@ -26,7 +29,22 @@ var feedView = Backbone.View.extend({
     window.arrOfPosts = arrOfPosts;
     this.$el.html(template);
     return this;
+  },
+
+  promoteModal: function(e){
+    $(".modal-img").attr("src", e.currentTarget.src);
+    var likeData = $(e.currentTarget).attr("numLikes");
+    var likeString = "";
+    if (likeData === "1") {
+      likeString = "1 like";
+    } else if (likeData === ""){
+      likeString = "";
+    } else {
+      likeString = likeData + " likes";
+    }
+    $("#numLikes").html(likeString);
   }
+
 });
 
 var view = new feedView({el: $('#mainContent'), collection: posts});
