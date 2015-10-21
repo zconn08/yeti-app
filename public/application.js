@@ -19,10 +19,10 @@ var feedView = Backbone.View.extend({
       }.bind(this)
     });
   },
-  //
 
   render: function(arrOfPosts){
     var template = _.template($('#feed-template').html());
+    arrOfPosts.shift();
     window.arrOfPosts = arrOfPosts;
     this.$el.html(template);
     return this;

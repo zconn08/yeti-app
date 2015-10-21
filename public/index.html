@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- <meta http-equiv="content-type" content="text/html;charset=UTF-8" /> -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet">
 
     <script src="underscore.js"></script>
     <script src="jquery.js"></script>
@@ -23,7 +24,7 @@
 
     <script type="text/template" id="feed-template">
       <% _.each(arrOfPosts, function(post) { %>
-        <%= post.msg_id %>
+        <img src="<%= post.path_prefix + post.media_key + "anchor.jpg"%>" alt="" />
       <% }); %>
     </script>
   </body>
