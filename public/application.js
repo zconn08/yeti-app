@@ -13,6 +13,7 @@ var feedView = Backbone.View.extend({
   events: {
     'click .thumbnail-img': 'promoteModal',
     'click .message-button': 'displayMessage',
+    'click .camera-container': 'publish'
   },
 
   initialize: function(){
@@ -61,6 +62,21 @@ var feedView = Backbone.View.extend({
       }
     });
   },
+
+  publish: function(e){
+    e.preventDefault();
+    $.ajax({
+      type: "post",
+      url: "/posts",
+      success: function (response) {
+        $("#publishing-message").html(response.Message)
+        $("#publishing-message").fadeIn();
+        setTimeout(function(){
+          $("#publishing-message").fadeOut()
+        }, 1000)
+      }
+    });
+  }
 
 });
 

@@ -17,7 +17,7 @@ end
 
 put '/posts' do
   content_type :json
-  {"Message" => "Message from the back end: This is where you would flag a post"}.to_json
+  {"Message" => "Message from the back end: This is where you would flag"}.to_json
 end
 
 

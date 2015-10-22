@@ -9,3 +9,22 @@
 }
 
 body { padding-top: 50px; }
+
+.glyphicon-camera {
+  font-size: 30px;
+}
+div > ul > li > .camera-container {
+  padding: 7px 15px;
+}
+
+#publishing-message {
+  position: absolute;
+  right: 0px;
+  top: 50px;
+  background-color: #9d9d9d;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  padding: 6px;
+  display: none;
+}
