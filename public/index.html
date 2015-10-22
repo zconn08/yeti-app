@@ -8,20 +8,21 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/app.css" rel="stylesheet">
 
-    <script src="underscore.js"></script>
-    <script src="jquery.js"></script>
-    <script src="backbone.js"></script>
+    <script src="js/underscore.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/backbone.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-     <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
   </head>
 
   <body>
 
-    <div id="mainContent">
-    </div>
+    <div id="mainContent"></div>
 
     <script type="text/template" id="feed-template">
+
+      <!-- Nav Bar -->
       <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
         <div class="container-fluid">
           <div class="navbar-header">
@@ -30,28 +31,33 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="javascript:void(0)" class="camera-container"> <span class="glyphicon glyphicon-camera" aria-hidden="true"></span></a></li>
           </ul>
-        </div><!-- /.container-fluid -->
+        </div>
       </nav>
+
       <div id="publishing-message"></div>
+
+      <!-- Feed of Posts -->
       <% _.each(arrOfPosts, function(post, i) { %>
         <% if(i % 4 === 0) { %>
           <div class="row">
         <% } %>
         <div class="col-md-3">
-          <img class="thumbnail-img" src="<%= post.path_prefix + post.media_key + "anchor.jpg"%>" data-toggle="modal" data-target="#myModal" numLikes="<%= post.likes %>" />
+          <img class="thumbnail-img"
+               src="<%= post.path_prefix + post.media_key + "anchor.jpg"%>"
+               data-toggle="modal"
+               data-target="#myModal"
+               numLikes="<%= post.likes %>"
+          />
         </div>
         <% if((i % 4) - 3 === 0) { %>
         </div>
         <% } %>
       <% }); %>
+
       <!-- Modal -->
       <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
-            <!-- <div class="modal-header"> -->
-
-              <!-- <h4 class="modal-title" id="myModalLabel">Modal title</h4> -->
-            <!-- </div> -->
             <div class="modal-body">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               <img class="modal-img" src="" />
@@ -65,8 +71,9 @@
           </div>
         </div>
       </div>
+
     </script>
   </body>
 
-  <script src="application.js"></script>
+  <script src="js/application.js"></script>
 </html>

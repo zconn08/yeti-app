@@ -34,25 +34,28 @@ var feedView = Backbone.View.extend({
   },
 
   promoteModal: function(e){
+    // Set Image
     $(".modal-img").attr("src", e.currentTarget.src);
+
+    // Set Likes
     var likeData = $(e.currentTarget).attr("numLikes");
-    var likeString = likeData === "" ? "0 " : likeData + " "
-    likeString += "<span class='glyphicon glyphicon-heart' aria-hidden='true'></span>"
+    var likeString = likeData === "" ? "0 " : likeData + " ";
+    likeString += "<span class='glyphicon glyphicon-heart' aria-hidden='true'></span>";
     $("#numLikes").html(likeString);
   },
 
   displayMessage: function(e){
     e.preventDefault();
-    var requestType = $(e.currentTarget).html() === "Flag" ? "put" : "delete"
+    var requestType = $(e.currentTarget).html() === "Flag" ? "put" : "delete";
     $.ajax({
       type: requestType,
       url: "/posts",
       success: function (response) {
-        $("#message").html(response.Message)
+        $("#message").html(response.Message);
         $("#message").fadeIn();
         setTimeout(function(){
-          $("#message").fadeOut()
-        }, 1000)
+          $("#message").fadeOut();
+        }, 1000);
       }
     });
   },
@@ -63,11 +66,11 @@ var feedView = Backbone.View.extend({
       type: "post",
       url: "/posts",
       success: function (response) {
-        $("#publishing-message").html(response.Message)
+        $("#publishing-message").html(response.Message);
         $("#publishing-message").fadeIn();
         setTimeout(function(){
-          $("#publishing-message").fadeOut()
-        }, 1000)
+          $("#publishing-message").fadeOut();
+        }, 1000);
       }
     });
   }
