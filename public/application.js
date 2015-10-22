@@ -36,14 +36,8 @@ var feedView = Backbone.View.extend({
   promoteModal: function(e){
     $(".modal-img").attr("src", e.currentTarget.src);
     var likeData = $(e.currentTarget).attr("numLikes");
-    var likeString = "";
-    if (likeData === "1") {
-      likeString = "1 like";
-    } else if (likeData === ""){
-      likeString = "";
-    } else {
-      likeString = likeData + " likes";
-    }
+    var likeString = likeData === "" ? "0 " : likeData + " "
+    likeString += "<span class='glyphicon glyphicon-heart' aria-hidden='true'></span>"
     $("#numLikes").html(likeString);
   },
 

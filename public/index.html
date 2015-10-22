@@ -33,8 +33,16 @@
         </div><!-- /.container-fluid -->
       </nav>
       <div id="publishing-message"></div>
-      <% _.each(arrOfPosts, function(post) { %>
-        <img class="thumbnail-img" src="<%= post.path_prefix + post.media_key + "anchor.jpg"%>" data-toggle="modal" data-target="#myModal" numLikes="<%= post.likes %>" />
+      <% _.each(arrOfPosts, function(post, i) { %>
+        <% if(i % 4 === 0) { %>
+          <div class="row">
+        <% } %>
+        <div class="col-md-3">
+          <img class="thumbnail-img" src="<%= post.path_prefix + post.media_key + "anchor.jpg"%>" data-toggle="modal" data-target="#myModal" numLikes="<%= post.likes %>" />
+        </div>
+        <% if((i % 4) - 3 === 0) { %>
+        </div>
+        <% } %>
       <% }); %>
       <!-- Modal -->
       <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -47,10 +55,10 @@
             <div class="modal-body">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               <img class="modal-img" src="" />
+              <span id="numLikes"></span>
             </div>
             <div class="modal-footer">
               <span id="message"></span>
-              <span id="numLikes"></span>
               <button type="button" class="btn btn-primary message-button">Flag</button>
               <button type="button" class="btn btn-danger message-button">Delete</button>
             </div>
